@@ -7,8 +7,26 @@ import game.parts.*;
 public class TestArea {
     public static void main(String[] argh) {
         Throw t = new Throw();
+        int [] i;
+        t.rollTheDices();
 
-        System.out.println(d.getValue());
+
+        for (int x: t.getDiceValues()) System.out.print(x + " ");
+
+        System.out.println();
+        t.dontRollDice(2);
+        t.rollTheDices();
+        for (int x: t.getDiceValues()) System.out.print(x + " ");
+
+        System.out.println();
+        t.dontRollDice(2);
+        t.rollTheDices();
+        for (int x: t.getDiceValues()) System.out.print(x + " ");
+
+        System.out.println();
+        t.dontRollDice(2);
+        t.rollTheDices();
+        for (int x: t.getDiceValues()) System.out.print(x + " ");
 
     }
 

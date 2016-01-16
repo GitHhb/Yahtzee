@@ -9,38 +9,33 @@ class ytzDice extends Dice {
     private boolean roll = true;
 
     public void roll() { if (roll) super.roll();}
+    public void dontRoll() {roll = false;}
 }
 
 public class Throw {
-    final private static int nrDices = 5; // one throw contains 5 dices
-    private Dice[] dices = new Dice[nrDices];
-    private boolean[] dicesToRoll = new boolean[nrDices]; // true == roll this dice
-    final private int nrOfThrows = 3;
+    public static final int nrDices = 5; // one throw contains 5 dices
+
+    private ytzDice[] dices = new ytzDice[nrDices];
+    //private boolean[] dicesToRoll = new boolean[nrDices]; // true == roll this dice
+    private int nrOfThrows = 3;
 
     // Init theDices
     { for (int i = 0; i<nrDices; i++)
-        dices[i] = new Dice();
-      selectAllDices();
+        dices[i] = new ytzDice();
     }
 
-    void throwTheDices(){
-        for (int i = 0; i<nrDices; i++)
-            if (dicesToRoll[i]) dices[i].roll();
-        //for (Dice d: dices)
-            //if (dicesToRoll[i]) d.roll();
-
+    public int rollTheDices(){
+        // roll dices that may be rolled, then return nr of throws left
+        if (nrOfThrows == 0) return 0;
+        for (Dice d: dices) d.roll();
+        return --nrOfThrows;
     }
 
-    void selectAllDices(){
-        for (int i = 0; i<nrDices; i++)
-            dicesToRoll[i] = true;
+    public void dontRollDice(int diceNr) {
+        dices[diceNr].dontRoll();
     }
 
-    void selectDice(int diceNr){
-        dicesToRoll[diceNr] = true;
-    }
-
-    public int[] getDices() {
+    public int[] getDiceValues() {
         int[] diceValues = new int[nrDices];
         for (int i = 0; i < nrDices; i++)
             diceValues[i] = dices[i].getValue();
