@@ -3,28 +3,48 @@ package game.parts;
 /**
  * Created by leandro on 15-1-2016.
  */
+
+class ytzDice extends Dice {
+    // Implement dices we don't want to roll again
+    private boolean roll = true;
+
+    public void roll() { if (roll) super.roll();}
+}
+
 public class Throw {
     final private static int nrDices = 5; // one throw contains 5 dices
-    Dice[] theDices = new Dice[nrDices];
-    private boolean[] theDicesToRoll = new boolean[nrDices]; // true == roll this dice
+    private Dice[] dices = new Dice[nrDices];
+    private boolean[] dicesToRoll = new boolean[nrDices]; // true == roll this dice
+    final private int nrOfThrows = 3;
 
     // Init theDices
     { for (int i = 0; i<nrDices; i++)
-        theDices[i] = new Dice();
+        dices[i] = new Dice();
       selectAllDices();
     }
 
-    void throwSelectedDices(){
+    void throwTheDices(){
         for (int i = 0; i<nrDices; i++)
-            if (theDicesToRoll[i]) theDices[i] =  new Dice();
+            if (dicesToRoll[i]) dices[i].roll();
+        //for (Dice d: dices)
+            //if (dicesToRoll[i]) d.roll();
+
     }
 
     void selectAllDices(){
         for (int i = 0; i<nrDices; i++)
-            theDicesToRoll[i] = true;
+            dicesToRoll[i] = true;
     }
 
     void selectDice(int diceNr){
-        theDicesToRoll[diceNr] = true;
+        dicesToRoll[diceNr] = true;
     }
+
+    public int[] getDices() {
+        int[] diceValues = new int[nrDices];
+        for (int i = 0; i < nrDices; i++)
+            diceValues[i] = dices[i].getValue();
+        return diceValues;
+    }
+
 }

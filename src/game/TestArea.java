@@ -6,8 +6,8 @@ import game.parts.*;
  */
 public class TestArea {
     public static void main(String[] argh) {
-        Dice d = new Dice();
-        d.roll();
+        Throw t = new Throw();
+
         System.out.println(d.getValue());
 
     }
