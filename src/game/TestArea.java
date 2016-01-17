@@ -19,7 +19,7 @@ public class TestArea {
         for (int x: t.getDiceValues()) System.out.print(x + " ");
 
         System.out.println();
-        t.dontRollDice(2);
+        t.dontRollDice(1);
         t.rollTheDices();
         for (int x: t.getDiceValues()) System.out.print(x + " ");
 

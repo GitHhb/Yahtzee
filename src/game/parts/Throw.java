@@ -19,7 +19,7 @@ public class Throw {
     //private boolean[] dicesToRoll = new boolean[nrDices]; // true == roll this dice
     private int nrOfThrows = 3;
 
-    // Init theDices
+    // Init dices - let every array element point to a ytzDice
     { for (int i = 0; i<nrDices; i++)
         dices[i] = new ytzDice();
     }
