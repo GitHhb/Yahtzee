@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 
 public class Controller {
     public Label msgDice1;
@@ -14,6 +14,12 @@ public class Controller {
     public Label msgDice4;
     public Label msgDice5;
     public Button butThrow;
+    public Label labelDice1;
+    public Label labelDice2;
+    public Label labelDice3;
+    public Label labelDice4;
+    public Label labelDice5;
+    GameManager game = new GameManager();
 
     public void selectDice1 (Event event) {
         switchDiceStatus(msgDice1);
@@ -33,7 +39,6 @@ public class Controller {
 
     void switchDiceStatus(Label dice){
         dice.setText(dice.getText().equals("ROLL") ? "KEEP" : "ROLL");
-
     }
 
     public void doQuit(ActionEvent actionEvent) {
@@ -41,6 +46,8 @@ public class Controller {
     }
 
     public void doThrow(ActionEvent actionEvent) {
+        Label[] l = {labelDice1, labelDice2, labelDice3, labelDice4, labelDice5};
+        game.rollMyDices(l);
 
     }
 }
